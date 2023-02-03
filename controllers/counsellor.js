@@ -1,10 +1,24 @@
 const Counsellor = require('../models/counsellor');
 
-// GET /counsellors: only for admin
+function selectProps(...props) {
+  return function (obj) {
+    const newObj = {};
+    props.forEach((name) => {
+      newObj[name] = obj[name];
+    });
+
+    return newObj;
+  };
+}
+
+// GET all counsellors
 exports.getCounsellors = (req, res, next) => {
   Counsellor.find()
     .then((counsellors) => {
-      res.status(200).json({ counsellors: counsellors });
+      const newCounsellors = counsellors.map(
+        selectProps('firstName', 'lastName', 'email', 'isAvailable')
+      );
+      res.status(200).json({ counsellors: newCounsellors });
     })
     .catch((err) => {
       if (!err.statusCode) {

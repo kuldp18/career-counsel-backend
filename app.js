@@ -9,6 +9,8 @@ const cors = require('cors');
 // my routes
 const studentAuthRoutes = require('./routes/studentAuth');
 const studentRoutes = require('./routes/student');
+const counsellorAuthRoutes = require('./routes/counsellorAuth');
+const counsellorRoutes = require('./routes/counsellor');
 
 // DB Connection
 mongoose.set('strictQuery', true);
@@ -33,6 +35,8 @@ app.use(express.urlencoded({ extended: true }));
 // routes
 app.use('/api', studentAuthRoutes);
 app.use('/api', studentRoutes);
+app.use('/api', counsellorAuthRoutes);
+app.use('/api', counsellorRoutes);
 
 // port
 const port = process.env.PORT || 8888;
