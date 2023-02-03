@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 // my routes
-const authRoutes = require('./routes/auth');
+const studentAuthRoutes = require('./routes/studentAuth');
 const studentRoutes = require('./routes/student');
 
 // DB Connection
@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // routes
-app.use('/api', authRoutes);
+app.use('/api', studentAuthRoutes);
 app.use('/api', studentRoutes);
 
 // port

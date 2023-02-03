@@ -2,10 +2,15 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 
-const { signout, signup, signin, isSignedIn } = require('../controllers/auth');
+const {
+  signout,
+  signup,
+  signin,
+  isSignedIn,
+} = require('../controllers/studentAuth');
 
 router.post(
-  '/signup',
+  '/student/signup',
   [
     check('firstName')
       .isLength({ min: 3 })
@@ -25,7 +30,7 @@ router.post(
 );
 
 router.post(
-  '/signin',
+  '/student/signin',
   [
     check('email').isEmail().withMessage('Valid email is required'),
 
@@ -36,6 +41,6 @@ router.post(
   signin
 );
 
-router.get('/signout', signout);
+router.get('/student/signout', signout);
 
 module.exports = router;

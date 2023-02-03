@@ -7,7 +7,9 @@ const {
   updateStudent,
 } = require('../controllers/student');
 
-const { isSignedIn, isAuthenticated, isAdmin } = require('../controllers/auth');
+const { isSignedIn } = require('../controllers/studentAuth');
+
+const { isAuthenticated, isAdmin } = require('../controllers/commonAuth');
 
 router.param('studentId', getStudentById);
 router.get('/student/:studentId', isSignedIn, isAuthenticated, getStudent);
