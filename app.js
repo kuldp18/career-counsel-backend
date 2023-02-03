@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
+// my routes
+const authRoutes = require('./routes/auth');
+const studentRoutes = require('./routes/student');
+
 // DB Connection
 mongoose.set('strictQuery', true);
 
@@ -25,6 +29,10 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// routes
+app.use('/api', authRoutes);
+app.use('/api', studentRoutes);
 
 // port
 const port = process.env.PORT || 8888;

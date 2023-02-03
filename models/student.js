@@ -40,10 +40,12 @@ const studentSchema = new mongoose.Schema(
     sscMarks: {
       type: Number,
       required: false,
+      default: 0,
     },
     hscMarks: {
       type: Number,
       required: false,
+      default: 0,
     },
   },
   { timestamps: true }
